@@ -5,7 +5,9 @@
 #define WINVER _WIN32_WINNT_WINXP
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 #define NTDDI_VERSION NTDDI_WINXP
-#define MAX_PW_LEN 20
+#define MAX_PW_LEN 30
+#define PATH "C:\Documents and Settings\Eastand\바탕 화면\password.txt"
+#define DEFAULT_PW "sejong_security_2018!"
 
 char *menuList[] = {"Sejong Password Manager\n\n", "A. Change Password\n", "B. Validate Password\n", "C. Quit\n\n", "Enter your choice : "};
 char *criteriaList[] = {"- it is at least 8 characters long\n","- it contains at least one letter\n","- it contains at least one digit\n","- it contains at least one of these four characters: <, >, _, ?, !\n"};
@@ -13,17 +15,25 @@ char *criteriaList[] = {"- it is at least 8 characters long\n","- it contains at
 void menu();
 void myFlush();
 void consoleClear(int);
+
 void changePassword();
+bool checkValid(char *);
 bool isHaveLetter(char *);
 bool isHaveDigit(char *);
 bool isHaveCharacter(char *);
-bool checkValid(char *);
+
 bool validatePW(char *real, char *input);
+void transferPW(char *);
+bool isFileExist();
 
 int main()
 {
 	//char *realPW;
-	//파일에서 패스워드 가져오기. 파일 존재하지 않으면 pw default = "sejong_security_2018!"
+	//파일에서 패스워드 가져오기. 파일 존재하지 않으면 pw default = "sejong_security_2018!" 패스워드 가져올 때 암호화해서 가져오기.
+	char realPw[MAX_PW_LEN+1]="";
+	
+	transferPW(realPw);
+	
 	menu();
 	return 0;
 }
@@ -114,6 +124,27 @@ bool isHaveCharacter(char *pw){
 bool validatePW(char *real, char *input){
 	
 	return false;
+}
+
+void transferPW(char *pw){
+	if(isFileExist){
+		FILE *f = fopen(PATH, "r");
+		fscanf(f,"%s", pw);
+		fclose(f);
+	}
+	else{
+		strcpy(pw, DEFAULT_PW);
+	}
+}
+// 패스워드 파일 유뮤 확인하는 함수
+bool isFileExist(){
+	FILE *f = fopen(PATH, "r");
+	if(f == NULL){
+		printf("No FILE\n");
+		return false;
+	}
+	fclose(f);
+	return true;
 }
 
 // 버퍼 비우는 함수
