@@ -9,8 +9,10 @@
 #define MAX_PW_LEN 30
 #define PATH "C:\\Documents and Settings\\Eastand\\πŸ≈¡ »≠∏È\\password.txt"
 #define DEFAULT_PW "sejong_security_2018!"
+#define TRUE 1
+#define FALSE 0
 
-void menu();
+void menu(char *);
 void myFlush();
 void consoleClear(int);
 
@@ -20,7 +22,7 @@ bool isHaveLetter(char *);
 bool isHaveDigit(char *);
 bool isHaveCharacter(char *);
 
-bool validatePW(char *real, char *input);
+void validatePW(char *real);
 
 void transferPW(char *);
 bool isFileExist();
