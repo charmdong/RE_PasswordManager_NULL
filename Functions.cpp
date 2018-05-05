@@ -17,7 +17,7 @@ void menu(char *pw){
 		consoleClear(500);
 
 		switch(choice) {
-		case 'A': changePassword(pw);break;
+		case 'A': changePW(pw);break;
 		case 'B': validatePW(pw);break;
 		case 'C': quitMenu(pw);
 		}
@@ -26,7 +26,7 @@ void menu(char *pw){
 	}
 }
 
-void changePassword(char *pw){
+void changePW(char *pw){
 	int i;
 	char change[MAX_PW_LEN+1];
 

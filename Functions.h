@@ -16,7 +16,7 @@ void menu(char *);
 void myFlush();
 void consoleClear(int);
 
-void changePassword(char *);
+void changePW(char *);
 bool checkValid(char *);
 bool isHaveLetter(char *);
 bool isHaveDigit(char *);
