@@ -16,13 +16,15 @@ void menu(char *);
 void myFlush();
 void consoleClear(int);
 
-void changePassword();
+void changePassword(char *);
 bool checkValid(char *);
 bool isHaveLetter(char *);
 bool isHaveDigit(char *);
 bool isHaveCharacter(char *);
 
-void validatePW(char *real);
+void validatePW(char *);
+
+void quitMenu(char *);
 
 void transferPW(char *);
 bool isFileExist();

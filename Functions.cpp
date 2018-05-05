@@ -2,7 +2,7 @@
 char *menuList[] = {"Sejong Password Manager\n\n", "A. Change Password\n", "B. Validate Password\n", "C. Quit\n\n", "Enter your choice : "};
 char *criteriaList[] = {"- it is at least 8 characters long\n","- it contains at least one letter\n","- it contains at least one digit\n","- it contains at least one of these four characters: <, >, _, ?, !\n"};
 
-void menu(char *realPw){
+void menu(char *pw){
 	char choice;
 	int i;
 
@@ -17,16 +17,16 @@ void menu(char *realPw){
 		consoleClear(500);
 
 		switch(choice) {
-		case 'A': changePassword();break;
-		case 'B': validatePW(realPw);break;
-		case 'C': printf("\n# Exit the Password Manager ! #\n\n"); Sleep(1500);
+		case 'A': changePassword(pw);break;
+		case 'B': validatePW(pw);break;
+		case 'C': quitMenu(pw);
 		}
 		if(choice == 'C')
 			break;
 	}
 }
 
-void changePassword(){
+void changePassword(char *pw){
 	int i;
 	char change[MAX_PW_LEN+1];
 
@@ -40,6 +40,7 @@ void changePassword(){
 		myFlush();
 
 		if(checkValid(change)){
+			strcpy(pw, change);
 			printf("\n# Changing PW is Completed !#\n\n");
 			consoleClear(1500);
 			return;
@@ -92,6 +93,15 @@ void validatePW(char *real){
 	!strcmp(real,input) ? printf("\n# Validation is completed successfully !#\n") : printf("\n# Validation is failed !#\n");
 	consoleClear(1500);
 }
+
+void quitMenu(char *realPw){
+	FILE *f = fopen(PATH, "w+");
+	fprintf(f, "%s", realPw);
+	fclose(f);
+	printf("\n# Exit the Password Manager ! #\n\n"); 
+	Sleep(1500);
+}
+
 // 텍스트 파일에서 패스워드 가져오는 함수
 void transferPW(char *pw){
 	if(isFileExist()){
