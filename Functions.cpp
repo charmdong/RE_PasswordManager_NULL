@@ -78,7 +78,7 @@ bool isHaveDigit(char *pw){
 bool isHaveCharacter(char *pw){
 	int i;
 	for(int i=0; i<strlen(pw); i++){
-		if(pw[i] == '<' ||pw[i] == '>' ||pw[i] == '_' ||pw[i] == '?')
+		if(pw[i] == '<' ||pw[i] == '>' ||pw[i] == '_' ||pw[i] == '?'||pw[i] == '!')
 			return TRUE;
 	}
 	return FALSE;
