@@ -1,16 +1,17 @@
 #pragma once
 #include <stdio.h>
-#include <cstring>
-#include <cstdlib>
+#include <string.h>
+#include <stdlib.h>
 #include <windows.h>
 #define WINVER _WIN32_WINNT_WINXP
 #define _WIN32_WINNT _WIN32_WINNT_WINXP
 #define NTDDI_VERSION NTDDI_WINXP
 #define MAX_PW_LEN 30
-#define PATH "C:\\Documents and Settings\\Eastand\\πŸ≈¡ »≠∏È\\password.txt"
+//#define PATH "C:\\Documents and Settings\\Eastand\\πŸ≈¡ »≠∏È\\password.txt"
+#define PATH "C:\\Users\\Chung Eastand\\Desktop\\password.txt"
 #define DEFAULT_PW "sejong_security_2018!"
-#define TRUE 1
-#define FALSE 0
+
+typedef enum {false, true} bool;
 
 void menu(char *);
 void myFlush();
