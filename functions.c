@@ -7,7 +7,7 @@ void menu(char *pw) {
 		int i;
 
 		while (1) {
-				for (int i = 0; i < sizeof(menuList) / sizeof(menuList[0]); i++) {
+				for (i = 0; i < sizeof(menuList) / sizeof(menuList[0]); i++) {
 						printf("%s", menuList[i]);
 				}
 				scanf(" %c", &choice);
@@ -59,7 +59,7 @@ bool checkValid(char *pw) {
 // 패스워드가 문자를 갖고 있는지 확인
 bool isHaveLetter(char *pw) {
 		int i;
-		for (int i = 0; i < strlen(pw); i++) {
+		for (i = 0; i < strlen(pw); i++) {
 				if ((pw[i] >= 'a' && pw[i] <= 'z') || (pw[i] >= 'A' && pw[i] <= 'Z'))
 						return TRUE;
 		}
@@ -68,7 +68,7 @@ bool isHaveLetter(char *pw) {
 // 패스워드가 숫자를 갖고 있는지 확인
 bool isHaveDigit(char *pw) {
 		int i;
-		for (int i = 0; i < strlen(pw); i++) {
+		for (i = 0; i < strlen(pw); i++) {
 				if (pw[i] >= '0' && pw[i] <= '9')
 						return TRUE;
 		}
@@ -77,7 +77,7 @@ bool isHaveDigit(char *pw) {
 // 패스워드가 특정한 4개의 문자를 갖고 있는지 확인
 bool isHaveCharacter(char *pw) {
 		int i;
-		for (int i = 0; i < strlen(pw); i++) {
+		for (i = 0; i < strlen(pw); i++) {
 				if (pw[i] == '<' || pw[i] == '>' || pw[i] == '_' || pw[i] == '?' || pw[i] == '!')
 						return TRUE;
 		}
